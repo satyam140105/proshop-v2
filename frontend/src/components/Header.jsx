@@ -3,7 +3,7 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import {useSelector} from 'react-redux';
 const Header = () => {
-  const{cartItems}=useSelector(state=>state.cart)
+  const{cartItems}=useSelector((state)=>state.cart)
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>

@@ -15,7 +15,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
-import CartScreen from "./components/CartScreen";
+import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 const router = createBrowserRouter(
   createRoutesFromElements(

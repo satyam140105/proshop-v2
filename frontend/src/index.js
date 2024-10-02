@@ -11,7 +11,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import PrivateRoute from "./components/PrivateRoute";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
@@ -24,6 +23,7 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import store from "./store";
 import { Provider } from "react-redux";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,6 +50,7 @@ root.render(
     <Provider store={store}>
       <PayPalScriptProvider deferLoading={true}>
         <RouterProvider router={router} />
+      
       </PayPalScriptProvider>
     </Provider>
   </React.StrictMode>

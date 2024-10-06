@@ -11,7 +11,6 @@ import {
   useUploadProductImageMutation,
 } from "../../slices/productsApiSlice";
 
-
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
 
@@ -31,7 +30,8 @@ const ProductEditScreen = () => {
   } = useGetProductDetailsQuery(productId);
 
   const [updateProduct, { isLoading: loadingUpdate }] =
-    useUpdateProductMutation(); 
+    useUpdateProductMutation();
+
   const [uploadProductImage, { isLoading: loadingUpload }] =
     useUploadProductImageMutation();
 
@@ -49,8 +49,8 @@ const ProductEditScreen = () => {
         category,
         description,
         countInStock,
-      });
-      toast.success("product updated successfully");
+      }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
+      toast.success("Product updated");
       refetch();
       navigate("/admin/productlist");
     } catch (err) {
@@ -69,6 +69,7 @@ const ProductEditScreen = () => {
       setDescription(product.description);
     }
   }, [product]);
+
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
     formData.append("image", e.target.files[0]);
@@ -92,7 +93,7 @@ const ProductEditScreen = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant="danger">{error}</Message>
+          <Message variant="danger">{error.data.message}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
@@ -130,6 +131,7 @@ const ProductEditScreen = () => {
               ></Form.Control>
               {loadingUpload && <Loader />}
             </Form.Group>
+
             <Form.Group controlId="brand">
               <Form.Label>Brand</Form.Label>
               <Form.Control

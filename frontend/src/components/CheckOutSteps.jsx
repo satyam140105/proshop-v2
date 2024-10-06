@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -9,7 +8,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
       <Nav.Item>
         {step1 ? (
           <LinkContainer to='/login'>
-            <Nav.Link>Sign In</Nav.Link>
+            <Nav.Link>Please Sign In</Nav.Link>
           </LinkContainer>
         ) : (
           <Nav.Link disabled>Sign In</Nav.Link>
@@ -47,6 +46,6 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
       </Nav.Item>
     </Nav>
   );
-};
+}
 
 export default CheckoutSteps;
